@@ -1,0 +1,32 @@
+<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% @company_profiles = current_user.company_profiles %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @company_profile.company_name %>
+</p>
+
+<p>
+  <strong>Street address:</strong>
+  <%= @company_profile.street_address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @company_profile.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @company_profile.state %>
+</p>
+
+<p>
+  <strong>Zip code:</strong>
+  <%= @company_profile.zip_code %>
+</p>
+
+<%= link_to 'Edit', edit_company_profile_path(@company_profile) %> |
+<%= link_to 'Back', company_profiles_path %>

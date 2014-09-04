@@ -1,0 +1,2 @@
+module UsersJobListingsHelper
+end

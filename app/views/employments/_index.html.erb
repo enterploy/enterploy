@@ -1,0 +1,25 @@
+<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% @employment = current_user.employments %>
+
+
+    <% @employment.each do |employment| %>
+
+    <div class="employment_list">
+
+    <h3>Name of Company: </h3><%= employment.name_of_company %>
+    <h3>Job Cateorgy: </h3><%= employment.job_cateorgy %>
+
+    <br>
+      
+        <%= link_to 'Edit', edit_employment_path(employment) %>
+        <%= link_to 'Delete', employment, method: :delete, data: { confirm: 'Are you sure?' } %>
+    
+
+
+    </div>
+    <% end %>
+ 
+
+<br>
+
+

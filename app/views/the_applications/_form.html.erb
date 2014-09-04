@@ -1,0 +1,35 @@
+<%= simple_form_for(@the_application, html: {class: "well"}) do |f| %>
+  <% if @the_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@the_application.errors.count, "error") %> prohibited this the_application from being saved:</h2>
+
+      <ul>
+      <% @the_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class= "form-inputs">
+      <%= f.input :birthday, as: :date, start_year: Date.today.year - 100,
+                              end_year: Date.today.year - 12, 
+                              order: [:month, :day, :year], prompt: ["month","day","year"] %>
+      <%= f.input :street_address, placeholder: 'Street Address',label: false %>
+      <%= f.input :city, placeholder: 'City',label: false %>
+      <%= f.input :state, placeholder: 'State',label: false %>
+      <%= f.input :zip_code, placeholder: 'Zip Code',label: false %>
+      <%= f.input :country, priority: [ "United States of America" ], prompt: "Select country", label: false %>
+      <%= f.input :phone_number, placeholder: 'Phone Number',label: false%>
+      <%= f.input :eligable_to_work, as: :boolean, checked_value: true, unchecked_value: false, label: ' I am eligable to work in the United States' %>
+  </div>
+
+
+  <p id="notice"><%= notice %></p>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+
+<% end %>

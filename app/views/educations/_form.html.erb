@@ -1,0 +1,23 @@
+<%= simple_form_for(@education, html: {class: "well"}) do |f| %>
+  <%= f.error_notification %>
+
+  <% @degree_statuses = ["less then one year compleated", "1-2 years compleated", "2-3 years compleated", "3-4 years compleated", "4+ years compleated", "graduated"] %>
+
+  <div class="form-inputs">
+  	<%= f.input :school_name, label: false, placeholder: "School Name" %>
+  	<%= f.input :school_city, label: false, placeholder: "School City" %>
+  	<%= f.input :school_state, label: false, placeholder: "School State" %>
+  	<%= f.input :degree_type, label: false, placeholder: "Degree Type" %>
+  	<%= f.input :area_of_study, label: false, placeholder: "Area of Study" %>
+
+    <%= f.input :degree_status, collection: @degree_statuses, label: false, prompt: "Degree Status" %>
+
+  	<%= f.input :graduation_year, as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year + 12, 
+                              order: [:month, :year], prompt: ["month","year"] %>
+  </div>	
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

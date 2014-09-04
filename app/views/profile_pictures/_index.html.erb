@@ -1,0 +1,13 @@
+<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% @profile_picture = current_user.profile_pictures %>
+
+    <% @profile_picture.each do |profile_picture| %>
+    <div>
+        <%= image_tag profile_picture.asset.url(:medium), class: "img-thumbnail" %>
+    
+        <br>
+        <%= link_to 'Edit', edit_profile_picture_path(profile_picture) %>
+        <%= link_to 'Destroy', profile_picture, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  
+  <% end %>

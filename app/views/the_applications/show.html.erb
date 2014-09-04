@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<h3>Birthday: </h3><%= @the_application.birthday %>
+<br>
+<h3>Address</h3>
+<%= @the_application.street_address %><br>
+<%= @the_application.city %>
+<%= @the_application.state %>,
+<%= @the_application.zip_code %>
+<br>
+<%= @the_application.country %>
+<br>
+<h3>Phone Number:</h3><%= @the_application.phone_number %>
+<br>
+
+<br>
+
+<%= link_to 'Edit', edit_the_application_path(@the_application) %> |
+<%= link_to 'Back', the_applications_path %>

@@ -1,0 +1,33 @@
+<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% @education = current_user.educations %>
+
+<% @education.each do |education| %>
+
+    <div class= "educations_list">
+      <h2><strong>Your Education</strong></h2>
+
+      <h3>School Name: </h3><%= education.school_name %>
+      <br>
+      <h3>School State: </h3><%= education.school_state %>
+      <br>
+      <h3>Degree Type: </h3><%= education.degree_type %>
+      <br>
+      <h3>Degree Status: </h3><%= education.degree_status %>
+      <br>
+      <h3>Area of Study: </h3><%= education.area_of_study %>
+      <br>
+      <h3>Graduation Year: </h3><%= education.graduation_year %>
+      <br>
+     
+
+    
+    <%= link_to 'Edit', edit_education_path(education) %>
+    <%= link_to 'Delete', education, method: :delete, data: { confirm: 'Are you sure?' } %>
+    
+    
+    </div>
+    
+
+<% end %>
+
+<br>

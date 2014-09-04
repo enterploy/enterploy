@@ -1,0 +1,23 @@
+<h1>Log In</h1>
+
+<%= form_tag user_sessions_path do %>
+
+	<div class= "form-inputs">
+	<%= label_tag :email, "Email Address" %>
+	<%= text_field_tag :email, params[:email] %>
+
+	<%= label_tag :password, "Password" %>
+	<%= password_field_tag :password %>
+	</div>
+	<br />
+
+	<div class="form-actions">
+	<%= submit_tag "Log In" %>
+	</div>
+
+	<br>
+	<%= link_to "Forgot Password", new_password_reset_path %>
+	<br>
+	<%= link_to "Sign Up", register_path %>
+
+<% end %>

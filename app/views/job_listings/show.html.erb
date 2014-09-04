@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back', job_listings_path %>
+<br>
+  
+ 
+<strong>Company Name: </strong>
+<%= @job_listing.company_name %>
+<br>
+<strong>location: </strong>
+<%= @job_listing.location %>
+<br>
+<strong>Job Type: </strong>
+<%= @job_listing.job_type %>
+<br>
+<strong>Job Title: </strong>
+<%= @job_listing.job_title %>
+<br>
+<strong>Job Description: </strong>
+<%= @job_listing.job_description %>
+<br>
+<strong>Job Responsibilities: </strong>
+<%= @job_listing.job_responsibilities %>
+<br>
+<strong>Job Benifits: </strong>
+<%= @job_listing.job_benefits %>
+<br>
+<strong>Pay Range: </strong>
+<%= @job_listing.pay_range %>
+<br>
+
+
+<%= link_to 'Add company "friendship"', new_applying_job_path(job_listing_id: @job_listing)%>

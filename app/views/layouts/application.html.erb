@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>enterploy3</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Hind:400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<%= render 'layouts/header' %>
+
+<!-- following if statement is for the alearts and notices to appear at the top of the page -->
+<div>
+	<% if flash[:notice] %>
+		<div class="alert bg-success">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<%= flash[:notice] %>
+		</div>
+	<% end %>
+
+	<% if flash[:alert] %>
+		<div class="alert bg-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<%= flash[:alert] %>
+		</div>
+	<% end %>
+
+	<% if flash[:error] %>
+		<div class="alert bg-danger">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<%= flash[:error] %>
+		</div>
+	<% end %>
+</div>
+
+<!-- yield will display everything from the current directory -->
+<%= yield %> 
+
+
+<%= render 'layouts/footer' %>
+
+</body>
+</html>

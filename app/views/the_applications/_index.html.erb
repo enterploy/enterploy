@@ -1,0 +1,31 @@
+<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% @the_application = current_user.the_applications %>
+
+<% @the_application.each do |the_application| %>
+
+    <div class='application_list'>
+      <h2><strong>Your Application</strong></h2>
+
+
+    <h3>Birthday: </h3><%= the_application.birthday %>
+	<br>
+	<h3>Address</h3>
+		<%= the_application.street_address %><br>
+		<%= the_application.city %>
+		<%= the_application.state %>,
+		<%= the_application.zip_code %>
+	<br>
+		<%= the_application.country %>
+	<br>
+	<h3>Phone Number:</h3> <%= the_application.phone_number %>
+	<br>
+
+      <br>
+      <%= link_to 'Edit', edit_the_application_path(the_application) %>
+      <%= link_to 'Delete', the_application, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+<% end %>
+ 
+
+<br>
+

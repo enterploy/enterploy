@@ -1,0 +1,14 @@
+<% if @job_listing %>
+	<h1><%= @job_listing.company_name %></h1>
+
+	<p>Do you want to apply to <%= @job_listing.company_name %>?</p>
+
+	<%= form_for @applying_job, method: :post do |form| %>
+		<div class= "form form_action">
+			<%= form.hidden_field :job_listings_id, value: @job_listing %>
+			<%= submit_tag "yes, apply!", class: "btn btn-primary" %>
+			<%= link_to "Cancel", users_path, class: 'btn' %>
+
+		</div>
+	<% end %>
+<% end %>

@@ -1,0 +1,32 @@
+<% @current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+
+<div class="navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<div class="container">
+			<a href="/" class="navbar-brand"> enterploy</a>
+
+			<ul class="nav navbar-nav">
+				<!-- links that would be on the left of the nav bar -->
+				<% if @current_user %>
+					<li><%= link_to "Home", users_path %></li>
+				<% end %>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				
+
+				<% if @current_user %>
+					<% if @current_user.user_kind == 'Job Seeker'%>
+						<li><%= link_to "Find a Job", job_listings_path %></li>
+					<% end %>
+					<li><%= render :file => "app/views/profile_pictures/_icon_show" %></li>
+					<li><%= link_to @current_user.full_name, edit_user_path(@current_user) %> </li> 
+					<li><%= link_to "Log Out", logout_path, method: :delete %></li>	
+				<% else %>
+					<li><%= link_to "Sign Up", register_path %></li>
+					<li><%= link_to "Log In", login_path %></li>
+				<% end %>
+				</ul>
+		</div>	
+	</nav>
+</div>

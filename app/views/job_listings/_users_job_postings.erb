@@ -1,0 +1,17 @@
+<h1>Your current job postings</h1>
+<% current_user = User.find(session[:user_id]) if session[:user_id] %>
+<% @job_listing = current_user.job_listings %>
+
+<% @job_listing.each do |job_listing| %>
+  
+    <div class="job_post">
+    	<%= job_listing.company_name %>
+    	<br>
+    	<%= job_listing.location %>
+    	<br><br><br>
+    	<div class="more_information">
+    		<%= link_to 'more information', job_listing_path(job_listing) %>
+    	</div>
+    </div>
+  
+<% end %>

@@ -1,0 +1,26 @@
+<%= simple_form_for(@employment, html: {class: "well"}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+  	<%= f.input :job_cateorgy, label: false, placeholder: "Job Cateorgy" %>
+  	<%= f.input :name_of_company, label: false, placeholder: "Name of Company" %>
+  	<%= f.input :city_of_company, label: false, placeholder: "City of Company" %>
+  	<%= f.input :state_of_company, label: false, placeholder: "State of Company" %>
+  	<%= f.input :contact_name, label: false, placeholder: "Supervisor's Name" %>
+  	<%= f.input :contact_number, label: false, placeholder: "Supervisor's Phone Number" %>
+  	<%= f.input :job_title, label: false, placeholder: "Job Title" %>
+  	<%= f.input :full_part_time, label: "Check if you were a full time employee" %>
+  	<%= f.input :skills_learned, label: false, placeholder: "What skills have you learned" %>
+  	<%= f.input :reason_for_leaving, label: false, placeholder: "What was your reason for leaving" %>
+  	<%= f.input :start_date,as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year + 12, 
+                              order: [:month, :year], prompt: ["month","year"] %>
+  	<%= f.input :end_date, as: :date, start_year: Date.today.year - 50,
+                              end_year: Date.today.year + 12, 
+                              order: [:month, :year], prompt: ["month","year"]%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
