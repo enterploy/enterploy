@@ -13,15 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140901131850) do
 
-  create_table "applying_jobs", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "job_listing_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "applying_jobs", ["user_id", "job_listing_id"], name: "index_applying_jobs_on_user_id_and_job_listing_id", using: :btree
-
   create_table "company_profiles", force: true do |t|
     t.string   "company_name"
     t.string   "street_address"

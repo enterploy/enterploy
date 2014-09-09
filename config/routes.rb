@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   resources :educations
   resources :job_listings
   resources :employments
-  resources :applying_jobs
 
 
   root 'sign_in#index'
