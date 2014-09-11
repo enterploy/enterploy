@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
 
 	# applys to both
 	has_many :profile_pictures
-	
+	has_many :user_apps
+	has_many :apps, through: :user_apps
 
 
 	# Validation of inputs
