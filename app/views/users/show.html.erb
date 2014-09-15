@@ -1,4 +1,11 @@
-
 <div >
 	<%= link_to "Main Page", root_path %>
 </div>
+
+
+<div class= "well">
+	<%= @user.first_name%><br>
+
+	<%= link_to 'Add This Company', new_user_app_path(app_id: @user), class: 'btn btn-primary' %>
+</div>
+ 

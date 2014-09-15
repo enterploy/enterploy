@@ -1,0 +1,17 @@
+Hello.
+
+<% if @app %>
+	<h1><%= @app.full_name%></h1>
+
+	<p>Do you really want to Add <%= @app.full_name %>?</p>
+
+	<%= form_for @user_app, method: :post do |form| %>
+		<div class= "form form-actions">
+			<%= form.hidden_field :app_id, value: @app.user %>
+			<%= submit_tag "Yes, Apply", class: 'btn btn-primary' %>
+			<%= link_to "Cancel", job_listings_path, class: 'btn' %>
+
+		</div>
+	<% end %>
+
+<% end %>

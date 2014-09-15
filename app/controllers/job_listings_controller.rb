@@ -4,6 +4,8 @@ class JobListingsController < ApplicationController
 
   # GET /job_listings
   # GET /job_listings.json
+  
+
   def index
     @job_listings = current_user.job_listings
   end
