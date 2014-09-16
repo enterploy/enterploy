@@ -19,8 +19,8 @@ class UserAppsController < ApplicationController
 			@app = User.find(params[:user_app][:app_id])
 			@user_app = current_user.user_apps.new(app: @app)
 			@user_app.save
-			flash[:success] = "You are now friends "
-			redirect_to users_path(@app)
+			redirect_to users_path
+			flash[:notice] = "You are now friends with " + @app.full_name 
 		else
 			flash[:error] = "Company Required"
 			redirect_to users_path
