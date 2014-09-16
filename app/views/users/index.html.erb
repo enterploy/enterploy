@@ -1,55 +1,20 @@
-<% current_user ||= User.find(session[:user_id], params[:user_kind]) if session[:user_id] %>
-
-<!-- All the content for the JOB SEEKER user -->
-<% if current_user.user_kind == 'Job Seeker' %>
-
-	<ul class= "nav nav-pills">
-		<li><%= link_to "Add Profile Picture", new_profile_picture_path %></li>
-		<li><%= link_to 'Start yor Application', new_the_application_path %></li>
-		<li><%= link_to 'Add Education History', new_education_path %></li>
-		<li><%= link_to 'Add Employment History', new_employment_path %></li> 
-	</ul>
-
-	<h1>Profile page</h1>
-
-	<%= render :file => "app/views/profile_pictures/_index" %>
-	<%= render :file => "app/views/the_applications/_index" %>
-	<%= render :file => "app/views/educations/_index" %>
-	<%= render :file => "app/views/employments/_index" %>
 
 
+<div >
+		<%= link_to "Main Page", root_path %>
+</div>
 
 
-<!-- All the content for the EMPLOYEE SEEKER user -->
-<% else %>
+<% @user = User.all %>
 
-	<div class="centered">
-		<h1>you are a employer look to hire new employees!</h1>
-	</div>
+<% @user.each do|user|%>
 
-	<ul class= "nav nav-pills">
-		<li><%= link_to "Add Profile Picture", new_profile_picture_path %></li>
-		<li><%= link_to "Start your profile", new_company_profile_path %></li>
-		<li><%= link_to "Add a Job Posting", new_job_listing_path %></li>
-		
-
-	</ul>
-	 
-	<!-- if there is a profile pic display it -->
-	<%= render :file => "app/views/profile_pictures/_index" %>
-
-	<!-- if there is a profile filled out show it -->
-	<%= render :file => "app/views/company_profiles/index" %>
-
-	<!-- if this company has job postings list them -->
-	<%= render :file => "app/views/job_listings/_users_job_postings" %>
-
-
-<%end%>
-
-
-
-<!-- content that both types of users would see -->
-
-
+	<% if user.user_kind == 'Employee Seeker' %>
+		<div class= "well">
+			Name: <%= user.first_name%><br>
+			Type: <%= user.user_kind%><br>
+			<%= link_to 'Add This Company', new_user_app_path(app_id: user), class: 'btn btn-primary' %>
+		</div>
+	<%end %>
+<% end %>
 

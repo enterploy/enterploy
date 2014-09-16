@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:notice] = "Thanks for signing up!"
-        format.html { redirect_to users_path}
+        format.html { redirect_to @user}
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
