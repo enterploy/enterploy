@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910035114) do
+ActiveRecord::Schema.define(version: 20140917191735) do
 
   create_table "company_profiles", force: true do |t|
     t.string   "company_name"
@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(version: 20140910035114) do
     t.float    "pay_range"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "company_profile_id"
   end
 
-  add_index "job_listings", ["user_id"], name: "index_job_listings_on_user_id", using: :btree
+  add_index "job_listings", ["company_profile_id"], name: "index_job_listings_on_company_profile_id", using: :btree
 
   create_table "profile_pictures", force: true do |t|
     t.datetime "created_at"
