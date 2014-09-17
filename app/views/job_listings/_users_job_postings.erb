@@ -1,17 +1,25 @@
 <h1>Your current job postings</h1>
 <% current_user = User.find(session[:user_id]) if session[:user_id] %>
 <% @job_listing = current_user.job_listings %>
+<% @company_profiles = current_user.company_profiles %>
 
-<% @job_listing.each do |job_listing| %>
+	<% @job_listing.each do |job_listing| %>
+  		<% @company_profiles.each do |company_profile| %>
+		    <div class="job_post">
+
+		    	<%= company_profile.company_name %>
+		    	<br>
+		    	<%= company_profile.city %>, <%= company_profile.state %>
+		    	<br>
+		    	Job Type: <%= job_listing.job_type %>
+		    	<br>
+		    	Job Title: <%= job_listing.job_title %>
+		    	<br>
+		    	<br>
+		    	<div class="more_information">
+		    		<%= link_to 'more information', job_listing_path(job_listing) %>
+		    	</div>
+		    </div>
   
-    <div class="job_post">
-    	<%= job_listing.company_name %>
-    	<br>
-    	<%= job_listing.location %>
-    	<br><br><br>
-    	<div class="more_information">
-    		<%= link_to 'more information', job_listing_path(job_listing) %>
-    	</div>
-    </div>
-  
+<% end %>
 <% end %>

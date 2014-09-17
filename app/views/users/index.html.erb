@@ -1,5 +1,3 @@
-
-
 <div >
 		<%= link_to "Main Page", root_path %>
 </div>
@@ -7,13 +5,13 @@
 
 <% @user = User.all %>
 
-<% @user.each do|user|%>
+<% @user.each do|u|%>
 
-	<% if user.user_kind == 'Employee Seeker' %>
+	<% if u.user_kind == 'Employee Seeker' %>
 		<div class= "well">
-			Name: <%= user.first_name%><br>
-			Type: <%= user.user_kind%><br>
-			<%= link_to 'Add This Company', new_user_app_path(app_id: user), class: 'btn btn-primary' %>
+			Name: <%= u.first_name%><br>
+			Type: <%= u.user_kind%><br>
+			<%= link_to 'Add This Company', new_user_app_path(app_id: u), class: 'btn btn-primary' %>
 		</div>
 	<%end %>
 <% end %>

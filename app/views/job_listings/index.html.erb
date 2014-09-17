@@ -3,9 +3,12 @@
 <% @job_listings.each do |job_listing| %>
   
     <div class="job_post">
-    	<%= job_listing.company_name %>
+        Name: <%= job_listing.company_name %>
+        <br>
+    	Job Type: <%= job_listing.job_type %>
     	<br>
-    	<%= job_listing.location %>
+    	Job Title: <%= job_listing.job_title %>
+		    	
     	<br><br><br>
     	<div class="more_information">
     		<%= link_to 'more information', job_listing_path(job_listing) %>

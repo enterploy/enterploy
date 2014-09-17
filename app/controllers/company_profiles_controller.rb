@@ -29,7 +29,7 @@ class CompanyProfilesController < ApplicationController
 
     respond_to do |format|
       if @company_profile.save
-        format.html { redirect_to users_path, notice: 'Company profile was successfully created.' }
+        format.html { redirect_to @company_profile, notice: 'Company profile was successfully created.' }
         format.json { render :show, status: :created, location: @company_profile }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class CompanyProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @company_profile.update(company_profile_params)
-        format.html { redirect_to users_path, notice: 'Company profile was successfully updated.' }
+        format.html { redirect_to user_path, notice: 'Company profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @company_profile }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class CompanyProfilesController < ApplicationController
   def destroy
     @company_profile.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: 'Company profile was successfully destroyed.' }
+      format.html { redirect_to user_path, notice: 'Company profile was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

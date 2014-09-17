@@ -1,15 +1,11 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 
-<%= link_to 'Back', job_listings_path %>
 <br>
-  
+
  
-<strong>Company Name: </strong>
-<%= @job_listing.company_name %>
-<br>
-<strong>location: </strong>
-<%= @job_listing.location %>
-<br>
+<div class= "well" >
+	<h1>job_listings show</h1>
+	<br>
 <strong>Job Type: </strong>
 <%= @job_listing.job_type %>
 <br>
@@ -28,7 +24,7 @@
 <strong>Pay Range: </strong>
 <%= @job_listing.pay_range %>
 <br>
-
+</div>
 
 
 <!-- link_to 'Apply to Job', new_user_app_path(app_id: @user), class: 'btn btn-primary' %> -->

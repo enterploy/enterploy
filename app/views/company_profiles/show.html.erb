@@ -1,8 +1,8 @@
-<% current_user ||= User.find(session[:user_id]) if session[:user_id] %>
+<% current_user = User.find(session[:user_id]) if session[:user_id] %>
 <% @company_profiles = current_user.company_profiles %>
 
 <p id="notice"><%= notice %></p>
-
+<h1>Where is this page?</h1>
 <p>
   <strong>Company name:</strong>
   <%= @company_profile.company_name %>
