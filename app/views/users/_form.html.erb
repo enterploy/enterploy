@@ -8,6 +8,7 @@
     <%= f.input :password, label: 'Password' %>
     <%= f.input :password_confirmation, label: 'Password Confirmation' %>
     <%= f.input :user_kind, collection: ['Job Seeker', 'Employee Seeker'], prompt: "Select one" %>
+    <%= f.input :company_name, label: 'Company Name', hint: 'Leave blank for Job Seekers' %>
   </div>
 
   <div class="form-actions">

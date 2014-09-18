@@ -1,9 +1,10 @@
-<h1>Jobs you can Apply for</h1>
-<% @job_listings = JobListing.all %>
+<h1>Job you have Posted</h1>
+<% current_user = User.find(session[:user_id]) if session[:user_id] %>
+<% @job_listings = current_user.job_listings %>
 <% @job_listings.each do |job_listing| %>
   
     <div class="job_post">
-        Company Name: <%= job_listing.company_name %>
+        Name: <%= job_listing.company_name %>
         <br>
     	Job Type: <%= job_listing.job_type %>
     	<br>

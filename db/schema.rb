@@ -11,20 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917191735) do
-
-  create_table "company_profiles", force: true do |t|
-    t.string   "company_name"
-    t.string   "street_address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip_code"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "company_profiles", ["user_id"], name: "index_company_profiles_on_user_id", using: :btree
+ActiveRecord::Schema.define(version: 20140918174009) do
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -73,10 +60,10 @@ ActiveRecord::Schema.define(version: 20140917191735) do
     t.float    "pay_range"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "company_profile_id"
+    t.integer  "user_id"
   end
 
-  add_index "job_listings", ["company_profile_id"], name: "index_job_listings_on_company_profile_id", using: :btree
+  add_index "job_listings", ["user_id"], name: "index_job_listings_on_user_id", using: :btree
 
   create_table "profile_pictures", force: true do |t|
     t.datetime "created_at"
@@ -124,8 +111,10 @@ ActiveRecord::Schema.define(version: 20140917191735) do
     t.datetime "updated_at"
     t.string   "password_reset_token"
     t.string   "user_kind"
+    t.string   "company_name"
   end
 
+  add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
 

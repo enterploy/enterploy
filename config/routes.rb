@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :company_profiles
-
   resources :profile_pictures
 
   #URl rewrites 

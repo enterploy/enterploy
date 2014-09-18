@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       redirect_to register_path, notice: "You must sign up or sign in."
     end
   end
-
+# ********************************************************
+  
 end
 

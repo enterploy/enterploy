@@ -7,7 +7,6 @@ class User < ActiveRecord::Base
 	has_many :employments
 
 	# things specific to EMPLOYEE SEEKERS
-	has_many :company_profiles
 	has_many :job_listings
 
 	# applys to both
@@ -30,6 +29,7 @@ class User < ActiveRecord::Base
 
     #keeps all emails consistant and lowercase 
 	before_save :downcase_email
+	before_save :capitalize_name
 
 	def full_name 
   		self.first_name + " " + self.last_name
@@ -37,6 +37,11 @@ class User < ActiveRecord::Base
 
 	def downcase_email
 		self.email = email.downcase
+	end
+
+	def capitalize_name
+		self.first_name = first_name.capitalize
+		self.last_name = last_name.capitalize
 	end
 
 	def generate_password_reset_token!
