@@ -8,7 +8,9 @@
     	Job Type: <%= job_listing.job_type %>
     	<br>
     	Job Title: <%= job_listing.job_title %>
-		    	
+		<br>
+        Created: <%= time_ago_in_words(job_listing.created_at) %> ago
+
     	<br><br><br>
     	<div class="more_information">
     		<%= link_to 'more information', job_listing_path(job_listing) %>
