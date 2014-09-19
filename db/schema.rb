@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918174009) do
+ActiveRecord::Schema.define(version: 20140918195839) do
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -112,10 +112,12 @@ ActiveRecord::Schema.define(version: 20140918174009) do
     t.string   "password_reset_token"
     t.string   "user_kind"
     t.string   "company_name"
+    t.string   "profile_name"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
+  add_index "users", ["profile_name"], name: "index_users_on_profile_name", using: :btree
 
 end

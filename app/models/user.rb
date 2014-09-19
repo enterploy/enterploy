@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
   		self.first_name + " " + self.last_name
   	end
 
+  	def profile_name
+  		self.first_name + self.last_name
+  	end
+
 	def downcase_email
 		self.email = email.downcase
 	end

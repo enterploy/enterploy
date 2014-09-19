@@ -1,8 +1,6 @@
 
-<% current_user ||= User.find(session[:user_id], params[:user_kind]) if session[:user_id] %>
-
 <!-- All the content for the JOB SEEKER user -->
-<% if current_user.user_kind == 'Job Seeker' %>
+<% if @current_user.user_kind == 'Job Seeker' %>
 
 	<ul class= "nav nav-pills">
 		<li><%= link_to "Add Profile Picture", new_profile_picture_path %></li>
@@ -35,7 +33,7 @@
 	</ul>
 
 	<div class= 'well'>
-		<h1><%= current_user.company_name %></h1>
+		<h1><%= @current_user.company_name %></h1>
 	</div>
 	 
 	<!-- if there is a profile pic display it -->

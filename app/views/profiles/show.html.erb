@@ -1,0 +1,28 @@
+<div>
+	<%= link_to 'Add This Company', new_user_app_path(app_id: @user), class: 'btn btn-primary' %>
+</div>
+
+<div class="well">
+	<h1><%= @user.company_name %></h1>
+</div>
+
+<!-- once there is a form to get information from each company about the company in general, post it here. -->
+
+<h1>Current positions avaible</h1>
+<% @job_listings = @user.job_listings %>
+<% @job_listings.each do |job_listing| %>
+  
+    <div class="job_post">
+        Name: <%= job_listing.company_name %>
+        <br>
+    	Job Type: <%= job_listing.job_type %>
+    	<br>
+    	Job Title: <%= job_listing.job_title %>
+		    	
+    	<br><br><br>
+    	<div class="more_information">
+    		<%= link_to 'more information', job_listing_path(job_listing) %>
+    	</div>
+    </div>
+  
+<% end %>

@@ -9,8 +9,10 @@
 
 	<% if u.user_kind == 'Employee Seeker' %>
 		<div class= "well">
-			Name: <%= u.first_name%><br>
+
+			Company: <%= u.company_name%><br>
 			Type: <%= u.user_kind%><br>
+			<%= link_to 'View Profile', u.company_name, class: 'btn' %>
 			<%= link_to 'Add This Company', new_user_app_path(app_id: u), class: 'btn btn-primary' %>
 		</div>
 	<%end %>

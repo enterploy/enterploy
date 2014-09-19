@@ -6,9 +6,14 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-
   # GET /users/1/edit
   def edit
+    @user = User.find(session[:user_id], params[:user_kind]) if session[:user_id]
+  end
+
+  def show
+    @current_user = User.find(session[:user_id], params[:user_kind]) if session[:user_id]
+
   end
 
   # POST /users
@@ -57,7 +62,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find_by_company_name(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
