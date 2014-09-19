@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/register" => "users#new", as: :register 
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
+  
   resources :sign_in
   resources :users
   resources :user_sessions, only: [:new, :create]
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
 
   root 'sign_in#index'
   
-
+  get '/:id', to: 'profiles#show', as: 'profile'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
