@@ -29,7 +29,7 @@ class EmploymentsController < ApplicationController
 
     respond_to do |format|
       if @employment.save
-        format.html { redirect_to users_path, notice: 'Employment was successfully created.' }
+        format.html { redirect_to user_path(@current_user), notice: 'Employment was successfully created.' }
         format.json { render :show, status: :created, location: @employment }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class EmploymentsController < ApplicationController
   def update
     respond_to do |format|
       if @employment.update(employment_params)
-        format.html { redirect_to users_path, notice: 'Employment was successfully updated.' }
+        format.html { redirect_to user_path(@current_user), notice: 'Employment was successfully updated.' }
         format.json { render :show, status: :ok, location: @employment }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class EmploymentsController < ApplicationController
   def destroy
     @employment.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: 'Employment was successfully destroyed.' }
+      format.html { redirect_to user_path(@current_user), notice: 'Employment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

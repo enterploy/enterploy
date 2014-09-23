@@ -20,6 +20,9 @@ class ProfilePicturesController < ApplicationController
 
   # GET /profile_pictures/1/edit
   def edit
+    if !@profile_picture
+      flash[:notice] = 'must select a file'
+    end
   end
 
   # POST /profile_pictures
@@ -29,7 +32,7 @@ class ProfilePicturesController < ApplicationController
 
     respond_to do |format|
       if @profile_picture.save
-        format.html { redirect_to users_path, notice: 'Profile picture was successfully created.' }
+        format.html { redirect_to user_path(@current_user), notice: 'Profile picture was successfully created.' }
         format.json { render :show, status: :created, location: @profile_picture }
       else
         format.html { render :new }
@@ -43,7 +46,7 @@ class ProfilePicturesController < ApplicationController
   def update
     respond_to do |format|
       if @profile_picture.update(profile_picture_params)
-        format.html { redirect_to users_path, notice: 'Profile picture was successfully updated.' }
+        format.html { redirect_to user_path(@current_user), notice: 'Profile picture was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile_picture }
       else
         format.html { render :edit }
@@ -57,7 +60,7 @@ class ProfilePicturesController < ApplicationController
   def destroy
     @profile_picture.destroy
     respond_to do |format|
-      format.html { redirect_to users_path, notice: 'Profile picture was successfully destroyed.' }
+      format.html { redirect_to user_path(@current_user), notice: 'Profile picture was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
