@@ -23,5 +23,4 @@ Created: <%= time_ago_in_words(@job_listing.created_at) %> ago
 </div>
 
 
-
-<!-- link_to 'Apply to Job', new_user_app_path(app_id: @user), class: 'btn btn-primary' %> -->
+<%= link_to 'Apply', new_user_app_path(app_id: @job_listing), class: 'btn btn-primary' %>

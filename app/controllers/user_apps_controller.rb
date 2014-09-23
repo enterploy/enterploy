@@ -3,7 +3,7 @@ class UserAppsController < ApplicationController
 
 	def new
 		if params[:app_id]
-			@app = User.find(params[:app_id])
+			@app = JobListing.find(params[:app_id])
 			@user_app = current_user.user_apps.new(app: @app)
 		else
 			flash[:error] = "Application Required"
@@ -16,11 +16,11 @@ class UserAppsController < ApplicationController
 
 	def create 
 		if params[:user_app] && params[:user_app].has_key?(:app_id)
-			@app = User.find(params[:user_app][:app_id])
+			@app = JobListing.find(params[:user_app][:app_id])
 			@user_app = current_user.user_apps.new(app: @app)
 			@user_app.save
-			redirect_to users_path
-			flash[:notice] = "You are now friends with " + @app.full_name 
+			redirect_to user_path(current_user)
+			flash[:notice] = "Your Application has been sent to " + @app.company_name 
 		else
 			flash[:error] = "Company Required"
 			redirect_to users_path

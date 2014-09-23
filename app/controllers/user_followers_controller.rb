@@ -20,7 +20,7 @@ class UserFollowersController < ApplicationController
 			@user_follower = current_user.user_followers.new(follower: @follower)
 			@user_follower.save
 			redirect_to users_path
-			flash[:notice] = "You are now friends with " + @follower.company_name 
+			flash[:notice] = "You are now following " + @follower.company_name 
 		else
 			flash[:error] = "Company Required"
 			redirect_to users_path

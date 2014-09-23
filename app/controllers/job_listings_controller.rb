@@ -13,6 +13,7 @@ class JobListingsController < ApplicationController
   # GET /job_listings/1
   # GET /job_listings/1.json
   def show
+ 
   end
 
 

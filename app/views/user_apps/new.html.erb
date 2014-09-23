@@ -1,14 +1,14 @@
 <% if @app %>
-	<h1><%= @app.full_name%></h1>
+	<h1><%= @app.company_name%></h1>
 
-	<p>By clicking follow you will be update with new job postings from <%= @app.full_name %>. </p>
+	<p>By clicking <strong>Apply</strong> your information will be sent to <%= @app.company_name %> to be reviewed for the position of <%= @app.job_title %> . </p>
 	
-	<p>Do you want to follow <%= @app.full_name %>?</p>
+	<p>Do you want to Apply to <%= @app.company_name %>?</p>
 
 	<%= form_for @user_app, method: :post do |form| %>
 		<div class= "form form-actions">
 			<%= form.hidden_field :app_id, value: @app.id %>
-			<%= submit_tag "Yes, Follow", class: 'btn btn-primary' %>
+			<%= submit_tag "Yes, Apply", class: 'btn btn-primary' %>
 			<%= link_to "Cancel", users_path, class: 'btn' %>
 
 		</div>
