@@ -20,9 +20,6 @@ class ProfilePicturesController < ApplicationController
 
   # GET /profile_pictures/1/edit
   def edit
-    if !@profile_picture
-      flash[:notice] = 'must select a file'
-    end
   end
 
   # POST /profile_pictures

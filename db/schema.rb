@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918195839) do
+ActiveRecord::Schema.define(version: 20140923175113) do
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -102,6 +102,15 @@ ActiveRecord::Schema.define(version: 20140918195839) do
 
   add_index "user_apps", ["user_id", "app_id"], name: "index_user_apps_on_user_id_and_app_id", using: :btree
 
+  create_table "user_followers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_followers", ["user_id", "follower_id"], name: "index_user_followers_on_user_id_and_follower_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -112,12 +121,10 @@ ActiveRecord::Schema.define(version: 20140918195839) do
     t.string   "password_reset_token"
     t.string   "user_kind"
     t.string   "company_name"
-    t.string   "profile_name"
   end
 
   add_index "users", ["company_name"], name: "index_users_on_company_name", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
-  add_index "users", ["profile_name"], name: "index_users_on_profile_name", using: :btree
 
 end

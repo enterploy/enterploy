@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :job_listings
   resources :employments
   resources :user_apps
+  resources :user_followers
 
 
   root 'sign_in#index'
