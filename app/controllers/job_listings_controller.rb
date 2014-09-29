@@ -33,7 +33,7 @@ class JobListingsController < ApplicationController
 
     respond_to do |format|
       if @job_listing.save
-        format.html { redirect_to @job_listing, notice: 'Job listing was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Job listing was successfully created.' }
         format.json { render :show, status: :created, location: @job_listing }
       else
         format.html { render :new }
@@ -47,7 +47,7 @@ class JobListingsController < ApplicationController
   def update
     respond_to do |format|
       if @job_listing.update(job_listing_params)
-        format.html { redirect_to user_path, notice: 'Job listing was successfully updated.' }
+        format.html { redirect_to user_path(current_user), notice: 'Job listing was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_listing }
       else
         format.html { render :edit }
@@ -61,7 +61,7 @@ class JobListingsController < ApplicationController
   def destroy
     @job_listing.destroy
     respond_to do |format|
-      format.html { redirect_to user_path, notice: 'Job listing was successfully destroyed.' }
+      format.html { redirect_to user_path(current_user), notice: 'Job listing was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -74,6 +74,6 @@ class JobListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def job_listing_params
-      params.require(:job_listing).permit(:company_name, :company_city, :company_state, :job_type, :job_title, :job_description, :job_responsibilities, :job_benefits, :pay_range)
+      params.require(:job_listing).permit(:company_name, :company_city, :company_state, :job_type, :job_title, :job_description, :job_responsibilities, :job_benefits, :pay_range, :notification_email)
     end
 end

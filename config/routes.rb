@@ -15,8 +15,17 @@ Rails.application.routes.draw do
   resources :educations
   resources :job_listings
   resources :employments
-  resources :user_apps
   resources :user_followers
+  
+  resources :user_apps do 
+    member do 
+      put :accept
+    end
+  end
+
+
+
+  
 
 
   root 'sign_in#index'

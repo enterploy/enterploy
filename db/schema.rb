@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923175113) do
+ActiveRecord::Schema.define(version: 20140924170410) do
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -61,8 +61,10 @@ ActiveRecord::Schema.define(version: 20140923175113) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "notification_email"
   end
 
+  add_index "job_listings", ["notification_email"], name: "index_job_listings_on_notification_email", using: :btree
   add_index "job_listings", ["user_id"], name: "index_job_listings_on_user_id", using: :btree
 
   create_table "profile_pictures", force: true do |t|
@@ -98,8 +100,10 @@ ActiveRecord::Schema.define(version: 20140923175113) do
     t.integer  "app_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
+  add_index "user_apps", ["state"], name: "index_user_apps_on_state", using: :btree
   add_index "user_apps", ["user_id", "app_id"], name: "index_user_apps_on_user_id_and_app_id", using: :btree
 
   create_table "user_followers", force: true do |t|

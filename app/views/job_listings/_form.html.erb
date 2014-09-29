@@ -6,6 +6,9 @@
    
   	
     <%= f.input :company_name, collection: [@current_user.company_name], prompt: "Plese Select" %>
+
+    <%= f.input :notification_email, collection: [@current_user.email],hint: "this email will be used to send notifications about application requests." %>
+
   	<%= f.input :job_type, collection: ['Full Time', 'Part Time', 'Seasonal', 'Internship', 'Volunteer'], prompt: "Select one" %>
   	<%= f.input :job_title %>
   	<%= f.input :job_description %>

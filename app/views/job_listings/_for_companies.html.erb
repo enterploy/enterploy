@@ -13,9 +13,13 @@
         Created: <%= time_ago_in_words(job_listing.created_at) %> ago
           	
     	<br><br><br>
-    	<div class="more_information">
+    	<!-- <div class="more_information">
     		<%= link_to 'more information', job_listing_path(job_listing) %>
-    	</div>
+    	</div> -->
+
+        <%= link_to 'Edit', edit_job_listing_path(job_listing) %> |
+        <%= link_to 'Delete', job_listing, method: :delete, data: { confirm: 'Are you sure?' } %>
+        
     </div>
   
 <% end %>

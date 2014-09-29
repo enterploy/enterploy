@@ -17,6 +17,13 @@ class User < ActiveRecord::Base
 
 	has_many :user_apps
 	has_many :apps, through: :user_apps
+					# conditions: {user_apps: {state: 'accepted'}}
+
+	has_many :pending_user_apps, class_name: 'UserApp',
+					foreign_key: :user_id
+					# conditions: {state: 'pending'}
+
+	has_many :pending_apps, through: :pending_user_apps, source: :app
 
 
 	# Validation of inputs

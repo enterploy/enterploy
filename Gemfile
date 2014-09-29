@@ -33,7 +33,8 @@ gem 'country_select'
 gem 'bcrypt', '~> 3.1.5'
 gem 'minitest'
 gem 'paperclip'
-
+# gem 'state_machine'
+gem 'state_machine', :git => 'https://github.com/seuros/state_machine.git'
 
 group :development, :test do 
 	gem 'rspec-rails', '~>2.0'
