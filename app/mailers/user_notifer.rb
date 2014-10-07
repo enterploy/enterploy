@@ -11,4 +11,14 @@ class UserNotifer < ActionMailer::Base
   		subject: "#{@user.full_name} has sent you their application"
 
   end
+
+   def app_request_accepted(user_app_id)
+    user_app = UserApp.find(user_app_id)
+
+    @user = user_app.user
+    @company = user_app.company
+
+    mail to: @user.email,
+         subject: "#{@company.company_name} has began your hiring process."
+  end
 end

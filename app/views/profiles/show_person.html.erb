@@ -1,0 +1,19 @@
+<!-- @person is the current user profile. -->
+<div class= "well">
+	<h1><%= @person.full_name %></h1>
+</div>
+
+<div>
+	List all the Information that this user will display to a Comopany/ the world.
+</div>
+
+<div>
+	<% @profile_picture = @person.profile_pictures %>
+
+    <% @profile_picture.each do |profile_picture| %>
+    <div>
+        <%= image_tag profile_picture.asset.url(:medium), class: "img-thumbnail" %>
+    </div>
+  
+  <% end %>
+</div>

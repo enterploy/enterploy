@@ -5,9 +5,10 @@
   <div class="form-inputs">
    
   	
-    <%= f.input :company_name, collection: [@current_user.company_name], prompt: "Plese Select" %>
-
-    <%= f.input :notification_email, collection: [@current_user.email],hint: "this email will be used to send notifications about application requests." %>
+     <!-- f.input :company_name, collection: [@current_user.company_name], prompt: "Plese Select" %> -->
+    Company Name: <%= @current_user.company_name %>
+    <%= f.hidden_field :company_name, value: @current_user.company_name %>
+    <%= f.hidden_field :notification_email, value: @current_user.email %>
 
   	<%= f.input :job_type, collection: ['Full Time', 'Part Time', 'Seasonal', 'Internship', 'Volunteer'], prompt: "Select one" %>
   	<%= f.input :job_title %>
@@ -21,5 +22,7 @@
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
+
+  <p>* all notifications about this application will be sent to <strong><%= @current_user.email %></strong>. You can change notification settings and update your email address under settings </p>
 <% end %>
 

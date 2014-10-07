@@ -1,15 +1,23 @@
-<h1>Viewing Applied Job</h1>
-	
-
+<%= link_to 'back', user_apps_path %><br>
 <% if @user_app.requested? %>
-	<h3>Do you want to accept the application for <%= @app.first_name %></h3>
+	<h1>Hire <%= @applied_user.full_name %></h1>
+	Do you want to start the hiring process for <strong><%= @applied_user.full_name %></strong>? Starting the hiring process does not mean this applicant is hired.<br>
+	You will be able to directly talk with <strong><%= @applied_user.first_name %></strong> and later decide if you would like to grant the job.
 <% end %>
 
+<% if @user_app.accepted? %>
+	Hiring process started for <strong><%= @applied_user.full_name %></strong> with <strong><%= @app.company_name %></strong>
+<% end %>
 
-<div>
-	<% if @user_app.requested? %>
+<div class="form-actions">
+<% if @user_app.requested? %>
 	<%= form_for @user_app, url: accept_user_app_path(@user_app), method: :put do |form| %>
-	<%= submit_tag "Accept Application", class: 'btn btn-primary' %>
+	<%= submit_tag "Start", class: 'btn btn-success' %>
 	<% end %>
 <% end %>
+<br>
+<%= form_for @user_app, url: user_app_path(@user_app), method: :delete do |form| %>
+<%= submit_tag "Terminate Application", class: 'btn btn-danger' %>
+<% end %>
 </div>
+

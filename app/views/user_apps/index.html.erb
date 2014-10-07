@@ -1,8 +1,6 @@
-<h1>Companies Applied For</h1>
-
 <% @user_apps.each do |a| %>
-	<% app = a.app %>
-	
+	<% app = a.app %> <!-- finds the job_listing -->
+	<% applicant = a.company %>  <!-- finds the user that applied for the job. -->
 <div class= "well">
 	<div>
 		<!-- link to profile page of the company.  find out how to use the app_id from users_app to find the user in the users table, then link to the profile page through the company name. -->
@@ -10,16 +8,26 @@
 	</div>
 
 	<div>
-		<strong><%= app.company_name %></strong> <br>
 
 		<% if a.pending? %>
-			<em>Pending</em> <%= link_to 'Delete request', users_path %>
+			<strong><%= app.company_name %></strong> <br>
+			<em>Pending</em> <%= link_to 'Delete request', edit_user_app_path(a) %>
 		<% end %>
 		<% if a.requested? %>
-			<em>New Application</em> <%= link_to 'Accept request', users_path %>
+			<em>New Application</em><br>
+			Applicant: <strong><%= applicant.full_name %></strong> <br>
+			Job Title: <%= app.job_title %> <br> 
+			<%= link_to 'View Applicant', applicant.first_name, class: 'btn btn-info' %>
+			<%= link_to 'Start the Hiring Process', edit_user_app_path(a), class: 'btn btn-success' %>
 		<% end %>
-		<% if a.accepted? %>
-			<em>Hiring Process Started</em> <%= link_to 'Update ', users_path %>
+		<% if a.accepted? && applicant %>
+			<em>Hiring Process Started</em> <br>
+			Applicant: <strong><%= applicant.full_name %></strong> <br>
+			Company: <strong><%= app.company_name %></strong>
+			Job Title: <%= app.job_title %> <br>
+			<%= link_to 'View Applicant', applicant.first_name, class: 'btn btn-info' %>
+			<%= link_to 'View Company', app.company_name, class: 'btn btn-primary' %>
+			<%= link_to 'Update ', edit_user_app_path(a), class: 'btn' %>
 		<% end %>
 
 	</div>
@@ -27,3 +35,4 @@
 </div>
 
 <% end %>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924170410) do
+ActiveRecord::Schema.define(version: 20141006133145) do
 
   create_table "educations", force: true do |t|
     t.string   "school_name"
@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(version: 20140924170410) do
   add_index "profile_pictures", ["user_id"], name: "index_profile_pictures_on_user_id", using: :btree
 
   create_table "the_applications", force: true do |t|
-    t.date     "birthday"
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
@@ -91,6 +90,7 @@ ActiveRecord::Schema.define(version: 20140924170410) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.date     "date_of_birth"
   end
 
   add_index "the_applications", ["user_id"], name: "index_the_applications_on_user_id", using: :btree
@@ -101,8 +101,10 @@ ActiveRecord::Schema.define(version: 20140924170410) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
+    t.integer  "company_id"
   end
 
+  add_index "user_apps", ["company_id"], name: "index_user_apps_on_company_id", using: :btree
   add_index "user_apps", ["state"], name: "index_user_apps_on_state", using: :btree
   add_index "user_apps", ["user_id", "app_id"], name: "index_user_apps_on_user_id_and_app_id", using: :btree
 
